@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HK Essentials</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: white;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        nav h2 {
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        nav ul li:hover {
+            color: #ffcc00;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            border: none;
+            background: #ffcc00;
+            color: black;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Sale Banner */
+        .sale-banner {
+            text-align: center;
+            background: #ff4b2b;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        #timer {
+            margin-top: 5px;
+        }
+
+        /* Products */
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            width: 250px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .card i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+
+        .price {
+            color: #ffcc00;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .card button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            background: white;
+            color: black;
+            transition: 0.3s;
+        }
+
+        .card button:hover {
+            background: #ffcc00;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.4);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2><i class="fa-solid fa-bag-shopping"></i> HK Essentials</h2>
+    <ul>
+        <li>Home</li>
+        <li>Shop</li>
+        <li>Offers</li>
+        <li><i class="fa-solid fa-cart-shopping"></i></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <h1>Premium Essentials for Everyday Life</h1>
+    <p>Trendy • Affordable • High Quality</p>
+    <button>Shop Now</button>
+</div>
+
+<div class="sale-banner">
+    🔥 Flash Sale Live Now!
+    <div id="timer"></div>
+</div>
+
+<div class="products">
+    <div class="card">
+        <i class="fa-solid fa-shirt"></i>
+        <h3>Premium T-Shirt</h3>
+        <p class="price">₹499</p>
+        <button><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-shoe-prints"></i>
+        <h3>Sport Shoes</h3>
+        <p class="price">₹1,299</p>
+        <button><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-headphones"></i>
+        <h3>Wireless Headphones</h3>
+        <p class="price">₹999</p>
+        <button><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+    </div>
+</div>
+
+<footer>
+    © 2026 HK Essentials | Designed with ❤️
+</footer>
+
+<script>
+    var countDownDate = new Date();
+    countDownDate.setHours(countDownDate.getHours() + 24);
+
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML =
+            "Sale ends in: " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "Sale Ended";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
